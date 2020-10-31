@@ -8,6 +8,7 @@ const GameState = Object.freeze({
     LIVE:Symbol("live"),
     MEET:Symbol("meet"),
     INSIDE:Symbol("inside"),
+    LISTEN:Symbol("listen"),
 
     TOAST: Symbol("toast")
 });
@@ -56,7 +57,7 @@ export default class Game{
                 break;
                 case GameState.PARTY:
                     if(sInput.toLowerCase().match("party")){
-                        sReply = "He goes to the party.Then he meet his friend.Does he LIVE with his friend or go to the house?";
+                        sReply = "He goes to the party.Then he meet his friend.He want to LIVE with him or no.";
                         this.stateCur = GameState.LIVE;
     
                     }else{
@@ -67,26 +68,48 @@ export default class Game{
                     break;
                     case GameState.LIVE:
                     if(sInput.toLowerCase().match("live")){
-                        sReply = "All person looks like ghost.In this party,he looks his friend.Do you want to MEET his friend or go the house?";
+                        sReply = "All person looks like ghost.In this party,he looks his friend.Do you want to MEET him or go the house?";
                         this.stateCur = GameState.MEET;
     
                     }else{
-                        sReply = "You seem to have walked in to a party. The host offers you some toast. Do you take the toast or ask to call a tow truck?";
+                        sReply = "You do not want to live in the party.What should you go  to the car?";
                         this.stateCur = GameState.FLAT;
         
                     }
                     break;
                     case GameState.MEET:
                     if(sInput.toLowerCase().match("meet")){
-                        sReply = "He wanted to meet his friend.His friend has alot knowledge about haunted house.And he wans go to inside the haunted house.Do you want to go INSIDE the house or no?";
+                        sReply = "He wanted to meet his friend.His friend has alot  of knowledge about haunted house.And he want go to inside the haunted house.Do you want to go INSIDE the house or no?";
                         this.stateCur = GameState.INSIDE;
     
                     }else{
-                        sReply = "You seem to have walked in to a party. The host offers you some toast. Do you take the toast or ask to call a tow truck?";
+                        sReply = "He do not want to go inside the house.Would you like to back into the car?";
                         this.stateCur = GameState.FLAT;
         
                     }
                     break;
+                    case GameState.INSIDE:
+                        if(sInput.toLowerCase().match("inside")){
+                            sReply = "The haunted house is very scary from inside.His friend wanted to tell the story.Do you want to LISTEN the story or not?";
+                            this.stateCur = GameState.LISTEN;
+        
+                        }else{
+                            sReply = "He wants to listen the story.";
+                            this.stateCur = GameState.FLAT;
+            
+                        }
+                        break;
+                        case GameState.LISTEN:
+                            if(sInput.toLowerCase().match("listen")){
+                                sReply = "He listen the story from his friend then one person offers him to the TOAST";
+                                this.stateCur = GameState.LISTEN;
+            
+                            }else{
+                                sReply = "He rejects the toast and wanna go to back to the car.";
+                                this.stateCur = GameState.FLAT;
+                
+                            }
+                            break;
                     
                 
             case GameState.TOAST:
