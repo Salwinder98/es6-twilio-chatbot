@@ -4,6 +4,7 @@ const GameState = Object.freeze({
     WAIT: Symbol("wait"),
     MANSION: Symbol("mansion"),
     BUTLER: Symbol("butler"),
+    Party:Symbol("run"),
     TOAST: Symbol("toast")
 });
 
@@ -49,6 +50,16 @@ export default class Game{
     
                 }
                 break;
+                case GameState.Party:
+                    if(sInput.toLowerCase.match("run")){
+sReply="All person looks like ghost.Do you want to live in party or no?";
+                           this.stateCur=FLAT;
+
+                    }
+                    else{
+sReply="The road is deserted. After 1 hour there is still no help. Do you keep Waiting or do you go to the house?";
+                       this.stateCur=FLAT;
+                    }
             case GameState.TOAST:
                 if(sInput.toLowerCase().match("toast")){
                     sReply = "you enter a new world of adventure ... game over";
