@@ -107,12 +107,7 @@ sReply="The person looks like ghost in the party.Do you still want to live here 
                                     this.stateCur=GameState.Ghost;
 
                                 }
-                                case GameState.Ghost:
-                                    if(sInput.toLowerCase().match("")){
-
-
-
-                                    }
+                                break;
             case GameState.TOAST:
                 if(sInput.toLowerCase().match("toast")){
                     sReply = "you enter a new world of adventure ... game over";
