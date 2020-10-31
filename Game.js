@@ -7,6 +7,7 @@ const GameState = Object.freeze({
     PARTY:Symbol("party"),
     LIVE:Symbol("live"),
     MEET:Symbol("meet"),
+    INSIDE:Symbol("inside"),
 
     TOAST: Symbol("toast")
 });
@@ -68,6 +69,17 @@ export default class Game{
                     if(sInput.toLowerCase().match("live")){
                         sReply = "All person looks like ghost.In this party,he looks his friend.Do you want to MEET his friend or go the house?";
                         this.stateCur = GameState.MEET;
+    
+                    }else{
+                        sReply = "You seem to have walked in to a party. The host offers you some toast. Do you take the toast or ask to call a tow truck?";
+                        this.stateCur = GameState.FLAT;
+        
+                    }
+                    break;
+                    case GameState.MEET:
+                    if(sInput.toLowerCase().match("meet")){
+                        sReply = "He wanted to meet his friend.His friend has alot knowledge about haunted house.And he wans go to inside the haunted house.Do you want to go INSIDE the house or no?";
+                        this.stateCur = GameState.INSIDE;
     
                     }else{
                         sReply = "You seem to have walked in to a party. The host offers you some toast. Do you take the toast or ask to call a tow truck?";
