@@ -30,13 +30,13 @@ export default class Game{
                 if(sInput.toLowerCase().match("wait")){
                     sReply = "The road is deserted. After 1 hour there is still no help. Do you keep Waiting or do you go to the house?";
                 }else{
-                    sReply ="On the door is a large knocker. Do you knock or run back to your car to wait?";
+                    sReply ="On the door is a large knocker. Do you KNOCK or run back to your car to wait?";
                     this.stateCur = GameState.MANSION;
                 }
                 break;
             case GameState.MANSION:
                 if(sInput.toLowerCase().match("knock")){
-                    sReply = "The door opens and you are greeted by a hunch-back butler. He asks you to come in. Do you go in or run back to the car?"
+                    sReply = "The door opens and you are greeted by a hunch-back butler. He asks you to come in. Do you GO in or run back to the car?"
                     this.stateCur = GameState.BUTLER;
                 }else{
                     sReply = "The road is deserted. After 1 hour there is still no help. Do you keep Waiting or do you go to the house?";
@@ -50,7 +50,7 @@ export default class Game{
                     this.stateCur = GameState.FLAT;
 
                 }else{
-                    sReply = "You seem to have walked in to a party";
+                    sReply = "You seem to have walked in to a PARTY";
                     this.stateCur = GameState.PARTY;
     
                 }
