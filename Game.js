@@ -5,6 +5,7 @@ const GameState = Object.freeze({
     MANSION: Symbol("mansion"),
     BUTLER: Symbol("butler"),
     PARTY:Symbol("party"),
+    LIVE:Symbol("live"),
 
     TOAST: Symbol("toast")
 });
