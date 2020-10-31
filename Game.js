@@ -6,6 +6,7 @@ const GameState = Object.freeze({
     BUTLER: Symbol("butler"),
     PARTY:Symbol("party"),
     LIVE:Symbol("live"),
+    MEET:Symbol("meet"),
 
     TOAST: Symbol("toast")
 });
@@ -47,7 +48,7 @@ export default class Game{
                     this.stateCur = GameState.FLAT;
 
                 }else{
-                    sReply = "You seem to have walked in to a party. The host offers you some toast. Do you take the toast or ask to call a tow truck?";
+                    sReply = "You seem to have walked in to a party";
                     this.stateCur = GameState.PARTY;
     
                 }
@@ -56,6 +57,17 @@ export default class Game{
                     if(sInput.toLowerCase().match("party")){
                         sReply = "He goes to the party.Then he meet his friend.Does he LIVE with his friend or go to the house?";
                         this.stateCur = GameState.LIVE;
+    
+                    }else{
+                        sReply = "You seem to have walked in to a party. The host offers you some toast. Do you take the toast or ask to call a tow truck?";
+                        this.stateCur = GameState.FLAT;
+        
+                    }
+                    break;
+                    case GameState.LIVE:
+                    if(sInput.toLowerCase().match("live")){
+                        sReply = "All person looks like ghost.In this party,he looks his friend.Do you want to MEET his friend or go the house?";
+                        this.stateCur = GameState.MEET;
     
                     }else{
                         sReply = "You seem to have walked in to a party. The host offers you some toast. Do you take the toast or ask to call a tow truck?";
